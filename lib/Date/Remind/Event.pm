@@ -43,8 +43,10 @@ sub new {
             minutes => $dur,
         );
 
-        # There is an extra duration field, not documented in rem2ps
-        $body =~ s/.*? //;
+        # Depending on what value of -b remind is called with, the body
+        # is prefixed with human-readable duration text. Lets remove
+        # it.
+        $body =~ s/^(\d+:\d+([ap]m)?-\d+:\d+([ap]m)? )?//;
     }
     
     my $self  = {
