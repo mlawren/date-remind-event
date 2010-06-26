@@ -21,7 +21,6 @@ sub new {
         = split(/ /, $text, 6);
 
     my ( $y, $mon, $d ) = split( /\//, $date );
-    my ( $h, $m, $s );
 
     my $dt = DateTime->new(
         year => $y,
@@ -100,10 +99,10 @@ generated events.
 
 =head2 new($text) => Date::Remind::Event
 
-Convert a single line of $text into a Date::Remind::Event object.
-$text is expected to be a line of the output produced by the '-s'
-argument to L<remind>(1), as defined in the rem2ps(1) manpage under
-"REM2PS INPUT FORMAT".
+Converts $text into a single Date::Remind::Event object.  $text is
+expected to be a line of the output produced by the '-s' argument to
+L<remind>(1), as defined in the rem2ps(1) manpage under "REM2PS INPUT
+FORMAT".
 
 =head1 ATTRIBUTES
 
