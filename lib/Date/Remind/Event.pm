@@ -17,7 +17,7 @@ sub new {
     my $proto = shift;
     my $text  = shift || croak 'usage: new($text)';
 
-    my ( $date, $special, $tag, $dur, $time, $body )
+    my ( $date, $special, $tag, $duration, $time, $body )
         = split(/ /, $text, 6);
 
     my ( $y, $mon, $d ) = split( /\//, $date );
@@ -30,22 +30,22 @@ sub new {
         minute => $time eq '*' ? 0 : $time % MINUTES_PER_HOUR,
     );
 
-    my $dtdur;
+    my $dtduration;
 
-    if ( $dur eq '*' ) {
+    if ( $duration eq '*' ) {
         my $end = $dt->clone;
         $end->add( days => 1 );
         $end->truncate( to => 'day' );
-        $dtdur = $end - $dt;
+        $dtduration = $end - $dt;
     }
     else {
-        $dtdur = DateTime::Duration->new(
-            minutes => $dur,
+        $dtduration = DateTime::Duration->new(
+            minutes => $duration,
         );
 
         # Depending on what value of -b remind is called with, the body
         # is prefixed with human-readable duration text. Lets remove
-        # it.
+        # (only) that text if it is there.
         $body =~ s/^(\d+:\d+([ap]m)?-\d+:\d+([ap]m)? )?//;
     }
     
@@ -53,7 +53,7 @@ sub new {
         dt   => $dt,
         tag  => $tag,
         body => $body,
-        dur  => $dtdur,
+        duration  => $dtduration,
     };
 
     my $class = ref($proto) || $proto;
@@ -64,11 +64,11 @@ sub new {
 sub date { shift->{dt} };
 sub tag { shift->{tag} };
 sub body { shift->{body} };
-sub dur { shift->{dur} };
+sub duration { shift->{duration} };
 
 sub end {
     my $self = shift;
-    return $self->{dt}->clone->add( $self->{dur} );
+    return $self->{dt}->clone->add( $self->{duration} );
 };
 
 
@@ -89,7 +89,7 @@ Date::Remind::Event - Manipulate 'remind' output with Perl
   );
 
   print 'Start:       ' . $e->date->hms . "\n";
-  print 'Duration:    ' . $e->dur->minutes . "min\n";
+  print 'Duration:    ' . $e->duration->minutes . "min\n";
   print 'Description: ' . $e->body . "\n";
 
 =head1 DESCRIPTION
@@ -112,7 +112,7 @@ FORMAT".
 
 The start of the event.
 
-=head2 dur => DateTime::Duration
+=head2 duration => DateTime::Duration
 
 The length of the event.
 

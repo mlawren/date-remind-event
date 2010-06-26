@@ -18,7 +18,7 @@ while ( my $line = <IN> ) {
     my $e = Date::Remind::Event->new( $line );
 
     my ($hours, $minutes, $days)
-        = $e->dur->in_units('hours', 'minutes', 'days');
+        = $e->duration->in_units('hours', 'minutes', 'days');
 
     print 'Start:       ' . $e->date . "\n";
     print 'End:         ' . $e->end->hms . "\n";

@@ -8,7 +8,7 @@ use_ok('Date::Remind::Event');
 can_ok('Date::Remind::Event', qw/
     new
     date
-    dur
+    duration
     tag
     body
     end
@@ -30,7 +30,7 @@ is( $dt->hour, 0, 'hour' );
 is( $dt->minute, 0, 'minute' );
 is( $dt->second, 0, 'seconds' );
 
-my $dur = $i->dur;
+my $dur = $i->duration;
 isa_ok( $dur, 'DateTime::Duration' );
 is( $dur->days, 1, 'day duration' );
 is( $dur->minutes, 0, 'minutes' );
@@ -56,7 +56,7 @@ $i = Date::Remind::Event->new(
     '2010/07/06 * * 60 1080 18:00-19:00 test'
 );
 is($i->body, 'test', '-b1');
-is($i->dur->hours, 1, '1 hour duration');
+is($i->duration->hours, 1, '1 hour duration');
 is($i->end->hms, '19:00:00', 'end time');
 
 # $ remind -b2 -s test.rem 1 july 2010
