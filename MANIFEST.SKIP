@@ -1,3 +1,4 @@
 build-stamp
 install-stamp
 .*\.swp
+.git
