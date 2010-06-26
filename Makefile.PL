@@ -11,5 +11,9 @@ requires        'DateTime::Duration'   => 0;
 #install_script  'bin/rnp';
 #install_script  'bin/rnpt';
 
+resources
+    bugtracker => 'http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Date-Remind-Event',
+    repository => 'git://github.com/mlawren/date-remind-event.git';
+
 WriteAll;
 
