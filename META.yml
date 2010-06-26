@@ -1,14 +1,26 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         parselog
-version:      0.04
-version_from: 
-installdirs:  site
-requires:
-    DateTime:                      0
-    LockFile::Simple:              0
-    RRDs:                          0
-    Test::More:                    0
-
+---
+abstract: "A 'remind' event object"
+author:
+  - 'Mark Lawrence <nomad@null.net>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.17
+generated_by: 'Module::Install version 0.94'
+license: GPL
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Date-Remind-Event
+no_index:
+  directory:
+    - example
+    - inc
+    - t
+    - xt
+requires:
+  DateTime: 0
+  DateTime::Duration: 0
+version: 0.01
