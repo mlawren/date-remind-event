@@ -1,0 +1,55 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Date::Remind::Event;
+
+our $VERSION = '0.01';
+
+sub usage {
+    $0 =~ s/.*\///;
+    print STDERR "usage: $0\n";
+    exit 1;
+}
+
+open(IN, 'rem -s8 |') || die "open: $!";
+
+while ( my $line = <IN> ) {
+    chomp $line;
+    my $e = Date::Remind::Event->new( $line );
+    print 'Start:       ' . $e->date->hms . "\n";
+    print 'Duration:    ' . $e->dur->minutes . "min\n";
+    print 'Description: ' . $e->body . "\n\n";
+}
+
+
+__END__
+
+=head1 NAME
+
+remind-simple - A simple example of Date::Remind::Event usage
+
+=head1 SYNOPSIS
+
+  remind-simple
+
+=head1 DESCRIPTION
+
+An example of using L<Date::Remind::Event>.
+
+=head1 SEE ALSO
+
+L<Date::Remind::Event>
+
+=head1 AUTHOR
+
+Mark Lawrence E<lt>nomad@null.netE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2010 Mark Lawrence E<lt>nomad@null.netE<gt>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
