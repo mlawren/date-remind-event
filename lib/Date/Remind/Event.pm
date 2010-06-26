@@ -9,7 +9,7 @@ use constant {
     MINUTES_PER_HOUR => 60,
 };
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 our $ERROR = '';
 
 
