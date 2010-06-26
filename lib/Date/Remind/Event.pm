@@ -76,7 +76,7 @@ __END__
 
 =head1 NAME
 
-Date::Remind::Event - A 'remind' event object
+Date::Remind::Event - Manipulate 'remind' output with Perl
 
 =head1 SYNOPSIS
 
@@ -92,8 +92,8 @@ Date::Remind::Event - A 'remind' event object
 
 =head1 DESCRIPTION
 
-B<Date::Remind::Event> provides an object interface to L<remind>(1)
-generated events.
+B<Date::Remind::Event> provides a Perl object interface to textual
+events emitted by L<remind>(1).
 
 =head1 CONSTRUCTOR
 

@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use Test::More;
 
-BEGIN { plan tests => 15 };
+BEGIN { plan tests => 16 };
 
 use_ok('Date::Remind::Event');
 can_ok('Date::Remind::Event', qw/
@@ -32,6 +32,7 @@ is( $dt->second, 0, 'seconds' );
 
 my $dur = $i->dur;
 isa_ok( $dur, 'DateTime::Duration' );
+is( $dur->days, 1, 'day duration' );
 is( $dur->minutes, 0, 'minutes' );
 
 my $end = $i->end;

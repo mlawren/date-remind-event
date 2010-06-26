@@ -16,8 +16,13 @@ open(IN, 'rem -s8 |') || die "open: $!";
 while ( my $line = <IN> ) {
     chomp $line;
     my $e = Date::Remind::Event->new( $line );
-    print 'Start:       ' . $e->date->hms . "\n";
-    print 'Duration:    ' . $e->dur->minutes . "min\n";
+
+    my ($hours, $minutes, $days)
+        = $e->dur->in_units('hours', 'minutes', 'days');
+
+    print 'Start:       ' . $e->date . "\n";
+    print 'End:         ' . $e->end->hms . "\n";
+    print "Duration:    $days days $hours hours $minutes minutes\n";
     print 'Description: ' . $e->body . "\n\n";
 }
 
