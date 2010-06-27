@@ -11,6 +11,7 @@ use constant {
 
 our $VERSION = '0.03';
 our $ERROR = '';
+our $BFLAG = 0;
 
 
 sub new {
@@ -46,7 +47,9 @@ sub new {
         # Depending on what value of -b remind is called with, the body
         # is prefixed with human-readable duration text. Lets remove
         # (only) that text if it is there.
-        $body =~ s/^(\d+:\d+([ap]m)?-\d+:\d+([ap]m)? )?//;
+        if ( $BFLAG != 2 ) {
+            $body =~ s/^.*? //;
+        }
     }
     
     my $self  = {
@@ -83,28 +86,33 @@ Date::Remind::Event - Manipulate 'remind' output with Perl
 =head1 SYNOPSIS
 
   use Date::Remind::Event;
+  $Date::Remind::Event::BFLAG = 1;
 
   my $e = Date::Remind::Event->new(
-    '2010/08/15 * * * * My Event'
+    '2010/07/06 * * 60 1080 18:00-19:00 My Event'
   );
 
-  print 'Start:       ' . $e->date->hms . "\n";
-  print 'Duration:    ' . $e->duration->minutes . "min\n";
-  print 'Description: ' . $e->body . "\n";
+  print 'Start:       '. $e->date->hms         ."\n";
+  print 'Duration:    '. $e->duration->hours   ." hour\n";
+  print 'Description: '. $e->body              ."\n";
 
 =head1 DESCRIPTION
 
 B<Date::Remind::Event> provides a Perl object interface to textual
-events emitted by L<remind>(1).
+events emitted by L<remind>(1). The expected format of the input is the
+same as what is produced by "remind -s" (as defined in the L<rem2ps>(1)
+manpage under "REM2PS INPUT FORMAT").
+
+L<remind>(1) produces slightly different output depending on the value
+of the -b flag. To make sure that B<Date::Remind::Event> handles this
+correctly you should set B<$Date::Remind::Event::BFLAG> to the same
+value (default is 0).
 
 =head1 CONSTRUCTOR
 
 =head2 new($text) => Date::Remind::Event
 
-Converts $text into a single Date::Remind::Event object.  $text is
-expected to be a line of the output produced by the '-s' argument to
-L<remind>(1), as defined in the rem2ps(1) manpage under "REM2PS INPUT
-FORMAT".
+Converts $text into a single Date::Remind::Event object.
 
 =head1 ATTRIBUTES
 
