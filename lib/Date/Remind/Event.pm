@@ -108,6 +108,10 @@ of the -b flag. To make sure that B<Date::Remind::Event> handles this
 correctly you should set B<$Date::Remind::Event::BFLAG> to the same
 value (default is 0).
 
+See the "example/remind-simple" file in the distribution for one
+possible way of calling L<remind>(1) from within Perl and parsing its
+output.
+
 =head1 CONSTRUCTOR
 
 =head2 new($text) => Date::Remind::Event

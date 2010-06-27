@@ -11,7 +11,7 @@ sub usage {
     exit 1;
 }
 
-open(IN, 'rem -s8 |') || die "open: $!";
+open(IN, "rem -s8 -b$Date::Remind::Event::BFLAG |") || die "open: $!";
 
 while ( my $line = <IN> ) {
     chomp $line;
