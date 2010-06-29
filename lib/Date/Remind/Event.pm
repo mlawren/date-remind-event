@@ -99,9 +99,9 @@ Date::Remind::Event - Manipulate 'remind' output with Perl
 =head1 DESCRIPTION
 
 B<Date::Remind::Event> provides a Perl object interface to textual
-events emitted by L<remind>(1). The expected format of the input is the
-same as what is produced by "remind -s" (as defined in the L<rem2ps>(1)
-manpage under "REM2PS INPUT FORMAT").
+events emitted by the L<remind>(1) calendar program. The expected
+format of the input is the same as what is produced by "remind -s" (as
+defined in the L<rem2ps>(1) manpage under "REM2PS INPUT FORMAT").
 
 L<remind>(1) produces slightly different output depending on the value
 of the -b flag. To make sure that B<Date::Remind::Event> handles this
@@ -142,7 +142,8 @@ The body of the remind event.
 
 =head1 SEE ALSO
 
-L<DateTime>, L<DateTime::Duration>, L<remind>(1), L<rem2ps>(1)
+L<DateTime>, L<DateTime::Duration>, L<remind>(1), L<rem2ps>(1),
+http://www.roaringpenguin.com/products/remind
 
 =head1 AUTHOR
 
