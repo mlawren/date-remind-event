@@ -1,5 +1,5 @@
-example/remind-simple
 Changes
+example/remind-simple
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm
@@ -10,10 +10,11 @@ inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 lib/Date/Remind/Event.pm
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 MANIFEST.SKIP
 META.yml
 README
 t/test.t
-xt/02_pod_spell.t
-xt/01_pod.t
+xt/package-names.t
+xt/pod-coverage.t
+xt/pod.t

@@ -1,4 +1,8 @@
 build-stamp
 install-stamp
+pm_to_blib
 .*\.swp
 .git
+Makefile$
+MANIFEST.bak
+blib
