@@ -71,7 +71,7 @@ sub duration { shift->{duration} };
 
 sub end {
     my $self = shift;
-    return $self->{dt}->clone->add( $self->{duration} );
+    return $self->{dt}->clone->add_duration( $self->{duration} );
 };
 
 
