@@ -5,4 +5,6 @@ pm_to_blib
 .git
 Makefile$
 MANIFEST.bak
+MANIFEST.SKIP
+MYMETA*
 blib
