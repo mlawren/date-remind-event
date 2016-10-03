@@ -5,29 +5,26 @@ use Carp qw/croak/;
 use DateTime;
 use DateTime::Duration;
 use POSIX qw/floor/;
-use constant {
-    MINUTES_PER_HOUR => 60,
-};
+use constant { MINUTES_PER_HOUR => 60, };
 
 our $VERSION = '0.05';
-our $ERROR = '';
-our $BFLAG = 0;
-
+our $ERROR   = '';
+our $BFLAG   = 0;
 
 sub new {
     my $proto = shift;
-    my $text  = shift || croak 'usage: new($text)';
+    my $text = shift || croak 'usage: new($text)';
 
-    my ( $date, $special, $tag, $duration, $time, $body )
-        = split(/ /, $text, 6);
+    my ( $date, $special, $tag, $duration, $time, $body ) =
+      split( / /, $text, 6 );
 
     my ( $y, $mon, $d ) = split( /\//, $date );
 
     my $dt = DateTime->new(
-        year => $y,
-        month => $mon,
-        day => $d,
-        hour => $time eq '*' ? 0 : floor( $time / MINUTES_PER_HOUR ),
+        year   => $y,
+        month  => $mon,
+        day    => $d,
+        hour   => $time eq '*' ? 0 : floor( $time / MINUTES_PER_HOUR ),
         minute => $time eq '*' ? 0 : $time % MINUTES_PER_HOUR,
     );
 
@@ -40,9 +37,7 @@ sub new {
         $dtduration = $end - $dt;
     }
     else {
-        $dtduration = DateTime::Duration->new(
-            minutes => $duration,
-        );
+        $dtduration = DateTime::Duration->new( minutes => $duration, );
 
         # Depending on what value of -b remind is called with, the body
         # is prefixed with human-readable duration text. Lets remove
@@ -51,29 +46,28 @@ sub new {
             $body =~ s/^.*? //;
         }
     }
-    
-    my $self  = {
-        dt   => $dt,
-        tag  => $tag,
-        body => $body,
-        duration  => $dtduration,
+
+    my $self = {
+        dt       => $dt,
+        tag      => $tag,
+        body     => $body,
+        duration => $dtduration,
     };
 
     my $class = ref($proto) || $proto;
-    bless( $self, $class);
+    bless( $self, $class );
     return $self;
 }
 
-sub date { shift->{dt} };
-sub tag { shift->{tag} };
-sub body { shift->{body} };
-sub duration { shift->{duration} };
+sub date     { shift->{dt} }
+sub tag      { shift->{tag} }
+sub body     { shift->{body} }
+sub duration { shift->{duration} }
 
 sub end {
     my $self = shift;
     return $self->{dt}->clone->add_duration( $self->{duration} );
-};
-
+}
 
 1;
 
@@ -105,8 +99,8 @@ defined in the L<rem2ps>(1) manpage under "REM2PS INPUT FORMAT").
 
 L<remind>(1) produces slightly different output depending on the value
 of the -b flag. To make sure that Date::Remind::Event handles this
-correctly you should set $Date::Remind::Event::BFLAG to the same
-value (default is 0).
+correctly you should set $Date::Remind::Event::BFLAG to the same value
+(default is 0).
 
 See the "example/remind-simple" file in the distribution for one
 possible way of calling L<remind>(1) from within Perl and parsing its
@@ -161,10 +155,10 @@ Mark Lawrence E<lt>nomad@null.netE<gt>
 
 Copyright 2010-2011 Mark Lawrence
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or
-(at your option) any later version.
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
 
 =cut
 
