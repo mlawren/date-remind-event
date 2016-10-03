@@ -1,16 +1,10 @@
-0.05 (2011-09-08)
-
-    API Changes:
-        - N/A
-
-    New Features:
-        - N/A
+0.05 (yyyy-mm-dd)
 
     Enhancements:
         - Small documentation fixes.
 
     Bug Fixes:
-        - N/A
+        - [rt.cpan.org #117925] t/test.t fails (with DateTime 1.38?)
 
 Sun Jun 27 10:56:12 CEST 2010
 
