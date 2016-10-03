@@ -7,7 +7,7 @@ use DateTime::Duration;
 use POSIX qw/floor/;
 use constant { MINUTES_PER_HOUR => 60, };
 
-our $VERSION = '0.06';
+our $VERSION = '0.07_1';
 our $ERROR   = '';
 our $BFLAG   = 0;
 
